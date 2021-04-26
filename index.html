@@ -17,7 +17,7 @@
             (async () => {
                 cls = await browserifyBundle.bayesFunction.fromJson(model);
 
-                output.innerHTML = await cls.categorize('saya senang');
+                output.innerHTML = await cls.categorize('saya tidak senang');
             })();
             
         </script>
