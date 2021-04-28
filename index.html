@@ -5,6 +5,11 @@
         <title>Sentiment analysis Indonesia sederhana demo</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <style type="text/css">
+            .loading {
+                margin: 0 auto;
+                padding: 20px;
+                font-size: 140%;
+            }
             /* http://meyerweb.com/eric/tools/css/reset/ 
             v2.0 | 20110126
             License: none (public domain)
@@ -102,7 +107,6 @@
     </head>
     <body>
         <div id="root">
-            Loading...
             <noscript>JavaScript is required.</noscript>
         </div>
         <script src="bundle.js"></script>
@@ -121,7 +125,9 @@
                 const [output, setOutput] = useState('');
                 const [input, setInput] = useState('');
                 const [model, setModel] = useState("{}");
-                const [loading, setLoading] = useState(true)
+                const [loading, setLoading] = useState(true);
+
+                const MODEL_LOCATION = "https://damzaky.github.io/sentiment-analysis-indonesia-web-app/model.json";
                 
                 const OUTPUT_MAPPER = {
                     "positive": "positif",
@@ -133,7 +139,7 @@
 
                 useEffect(() => {
                     (async () => {
-                        await fetch("https://damzaky.github.io/sentiment-analysis-indonesia-web-app/model.json")
+                        await fetch(MODEL_LOCATION)
                         .then(res => res.json())
                         .then((modelObject) => {
                                 setModel(modelObject);
@@ -165,9 +171,9 @@
                     setOutput(resp);
                 }
 
-                return create("div", { className: `main-container ${output}` }, 
+                return loading ? create("h1", { className: "loading", key: "outputloading" }, "memuat model...") : create("div", { className: `main-container ${output}` }, 
                     create("div", { className: `main-container__section` },[
-                        create("h1", { key: "title" }, "Sentiment analysis bahasa Indonesia sederhana demo"+output),
+                        create("h1", { key: "title" }, "Sentiment analysis bahasa Indonesia sederhana demo"),
                         create("textarea", {
                             key: "input",
                             value: input,
@@ -175,7 +181,7 @@
                             className: "main-container__input",
                             onChange: (e) => handleChange(e)
                         }),
-                        loading ? create("h1", { key: "outputloading" }, "memuat model...") : create("h1", { key: "output" }, output ? `Tulisan tersebut bersentimen ${OUTPUT_MAPPER[output]}` : ''),
+                        create("h1", { key: "output" }, output ? `Tulisan tersebut bersentimen ${OUTPUT_MAPPER[output]}` : ''),
                     ])
                 );
             };
