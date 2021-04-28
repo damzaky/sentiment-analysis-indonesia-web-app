@@ -3,6 +3,8 @@
 
 Simple Indonesian sentiment analysis **client side machine learning inference** demonstration on the web. Meant for the model to be used **fully on client side**, so no server and no backend service is required. Model is using **naive bayes** machine learning algorithm. Library used for client side is react.js **without build tools**.
 
+Live demo: [https://damzaky.github.io/sentiment-analysis-indonesia-web-app/](https://damzaky.github.io/sentiment-analysis-indonesia-web-app/)
+
 ## How it works
 The model is trainned separately using SmSA dataset by running the `trainer.js`. Once training is done, the model is saved in JSON format. The client side then implements the machine learning library (bayes in this case) and asynchronously download the model to be used. Once the JSON model is fetched, the model can be run on client.
 
