@@ -67,10 +67,10 @@
                 height: 100%;
             }
             .negative {
-                background: #b55757;
+                background: #ffa8a8;
             }
             .positive {
-                background: #59b557;
+                background: #bcffbb;
             }
             .main-container {
                 min-height: 100%;
@@ -80,7 +80,7 @@
                 max-width: 900px;
                 padding: 20px;
                 margin: 0 auto;
-                font-size: 200%;
+                font-size: 140%;
             }
 
             .main-container__input {
@@ -89,8 +89,14 @@
                 width: 100%;
                 min-height: 300px;
                 font-family: Arial, Helvetica, sans-serif;
-                background: transparent;
+                background: #ffffff;
                 margin: 20px 0;
+                padding: 20px;
+                box-sizing: border-box;
+                border: 1px solid #ddd;
+                outline: none !important;
+                box-shadow: 0 3px 3px #0000007a;
+                border-radius: 5px;
             }
         </style>
     </head>
@@ -148,7 +154,7 @@
                         create("textarea", {
                             key: "input",
                             value: input,
-                            placeholder: "Silakan tulis sesuatu untuk dianalisis",
+                            placeholder: "saya sangat cinta dengan produk indonesia",
                             className: "main-container__input",
                             onChange: (e) => handleChange(e)
                         }),
